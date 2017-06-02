@@ -1,0 +1,10 @@
+com\classifier\Domain\Data.class
+com\classifier\Domain\Keyboard.class
+com\classifier\Domain\AttentionKeyboard.class
+com\classifier\Domain\Mouse.class
+com\classifier\Domain\Task.class
+com\classifier\Controller\AttentionResultController.class
+com\classifier\Domain\AttetionResult.class
+com\classifier\Domain\AttentionTask.class
+com\classifier\Domain\AttentionMouse.class
+com\classifier\Domain\App.class
