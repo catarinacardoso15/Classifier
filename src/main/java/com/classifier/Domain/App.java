@@ -15,8 +15,8 @@ public class App {
     public App() {
     }
 
-    public App(ArrayList<String> listT, String name, Date time, String user) {
-        this.listT = listT;
+    public App(String name, Date time, String user) {
+        this.listT = new ArrayList<String>();
         this.name = name;
         this.time = time;
         this.user = user;

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Catarina Cardoso on 02/06/2017.
  */
-public class AttetionResult {
+public class AttentionResult {
 
     private AttentionTask ResultTask;
     private AttentionMouse ResultMouse;
@@ -13,11 +13,13 @@ public class AttetionResult {
     private String user;
     private Date initialDate;
     private Date currentDate;
+    private long mouseCount;
+    private long keyCount;
 
-    public AttetionResult() {
+    public AttentionResult() {
     }
 
-    public AttetionResult(AttentionTask resultTask, AttentionMouse resultMouse, AttentionKeyboard resultKeyboard, String user, Date initialDate, Date currentDate) {
+    public AttentionResult(AttentionTask resultTask, AttentionMouse resultMouse, AttentionKeyboard resultKeyboard, String user, Date initialDate, Date currentDate) {
         ResultTask = resultTask;
         ResultMouse = resultMouse;
         ResultKeyboard = resultKeyboard;
@@ -72,6 +74,22 @@ public class AttetionResult {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public long getMouseCount() {
+        return mouseCount;
+    }
+
+    public void setMouseCount(long mouseCount) {
+        this.mouseCount = mouseCount;
+    }
+
+    public long getKeyCount() {
+        return keyCount;
+    }
+
+    public void setKeyCount(long keyCount) {
+        this.keyCount = keyCount;
     }
 
     @Override

@@ -1,23 +1,124 @@
 package com.classifier.Controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.classifier.Domain.*;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Date;
+import java.util.ArrayList;
 
 /**
- * Created by Catarina Cardoso on 02/06/2017.
+ *
+ * @author Catarina
  */
-
-@RestController
 public class AttentionResultController {
-    private final AtomicLong counter = new AtomicLong();
 
+    private AttentionResult result;
 
-    @RequestMapping(path = "/classifier", method = RequestMethod.GET)
-    public String greeting() {
-        return counter.incrementAndGet()+ " - Hello me";
+    public AttentionResultController() {
     }
+
+    public AttentionResultController(AttentionResult result) {
+        this.result = result;
+    }
+
+    public AttentionResult createAttentionResult(Data d, ArrayList<Rule> rule, double[] majorMouse, double[] majorKey) {
+        result = new AttentionResult();
+        result.setUser(d.getUser());
+        createResultsKeyboard(d.getListKeyboard(), majorKey);
+        createResultsMouse(d.getListMouse(), majorMouse);
+        createResultsTask(d.getListApp(),d.getListMouse(),d.getListKeyboard() ,d.getFinalDate(), rule);
+        return result;
+    }
+
+    public void createResultsTask(ArrayList<App> list, ArrayList<Mouse> m, ArrayList<Keyboard>k, Date finalDate, ArrayList<Rule> rule) {
+        list = TaskToAplication(list, "Tarefa", rule);
+        AttentionTaskController g = new AttentionTaskController(new AttentionTask());
+        ArrayList<AttentionTask> results = new ArrayList<AttentionTask>();
+        AttentionTask t = g.createResultTask(list,m, k,finalDate);
+        result.setKeyCount(t.getKeyC());
+        result.setMouseCount(t.getMouseC());
+        result.setResultTask(t);
+    }
+
+    public void createResultsMouse(ArrayList<Mouse> list, double[] majorMouse) {
+        AttentionMouseController g = new AttentionMouseController(new AttentionMouse());
+        AttentionMouse t = g.createMouseResult(list, majorMouse);
+        result.setResultMouse(t);
+    }
+
+    public void createResultsKeyboard(ArrayList<Keyboard> list, double[] major) {
+        AttentionKeyboardController g = new AttentionKeyboardController(new AttentionKeyboard());
+        AttentionKeyboard t = g.createResultKeyboard(list, major);
+        result.setResultKeyboard(t);
+    }
+
+    public ArrayList<App> TaskToAplication(ArrayList<App> list, String tarefa, ArrayList<Rule> rules) {
+        int t,g;
+        for (int i = 0; i < list.size(); i++) {
+            t=0;
+            g=0;
+            int fu=0;
+        
+            for (int q=0;q<rules.size();q++) {
+                
+                switch (rules.get(q).getTipo()) {
+                    case 0:
+                         System.out.println("tarefa:  "+list.get(i).getName());
+                        System.out.println("regra: "+rules.get(q).getNome());
+                        if (list.get(i).getName().toUpperCase().contains(rules.get(q).getNome().toUpperCase())) {
+                            System.out.println("passou");
+                           
+                           g=1;
+                        }
+                        t++;
+                        break;
+                    case 1:
+                        if (list.get(i).getName().toUpperCase().startsWith(rules.get(q).getNome().toUpperCase())) {
+                            t++;
+                            g=1;
+                        }
+                        break;
+                    case 2:
+                        if (list.get(i).getName().toUpperCase().endsWith(rules.get(q).getNome().toUpperCase())) {
+                             t++;
+                             g=1;
+                        }
+                        break;
+                    case 3:
+                       
+                        if (list.get(i).getName().toUpperCase().contains(rules.get(q).getNome().toUpperCase())) {
+                            t++;
+                            fu=1;
+                             System.out.println("------------------");
+                            System.out.println(list.get(i).getName());
+                            System.out.println(rules.get(q).getNome());
+                            System.out.println("-------------------");
+                            System.out.println("nao tarefa");
+                        }else{
+                            System.out.println("------------------");
+                            System.out.println(list.get(i).getName());
+                            System.out.println(rules.get(q).getNome());
+                            System.out.println("-------------------");
+                          g=1;
+                           t++;
+                        }
+                        
+                        break;
+                    default:
+                        break;
+                }
+
+                if(t==rules.size()){
+                   
+                    if(g==1 && fu==0){
+                        ArrayList<String>f=list.get(i).getListT();
+                        f.add(tarefa);
+                        list.get(i).setListT(f);
+                    }
+                }
+                
+            }
+        }
+        return list;
+    }
+   
 }

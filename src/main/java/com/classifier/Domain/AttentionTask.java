@@ -14,7 +14,8 @@ public class AttentionTask {
     private double timeOther;
     private double percentagemAplication;
     private double percentagemOther;
-
+    private long mouseC;
+    private long keyC;
     public AttentionTask() {
     }
 
@@ -82,5 +83,21 @@ public class AttentionTask {
 
     public void setPercentagemOther(double percentagemOther) {
         this.percentagemOther = percentagemOther;
+    }
+
+    public long getMouseC() {
+        return mouseC;
+    }
+
+    public void setMouseC(long mouseC) {
+        this.mouseC = mouseC;
+    }
+
+    public long getKeyC() {
+        return keyC;
+    }
+
+    public void setKeyC(long keyC) {
+        this.keyC = keyC;
     }
 }

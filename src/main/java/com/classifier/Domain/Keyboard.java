@@ -5,7 +5,7 @@ package com.classifier.Domain;
  */
 public class Keyboard {
     private long timestamp;
-    private double ktd;
+    private double kdt;
     private double tbk;
 
     public Keyboard() {
@@ -13,7 +13,7 @@ public class Keyboard {
 
     public Keyboard(long timestamp, double ktd, double tbk) {
         this.timestamp = timestamp;
-        this.ktd = ktd;
+        this.kdt = ktd;
         this.tbk = tbk;
     }
 
@@ -21,8 +21,8 @@ public class Keyboard {
         return timestamp;
     }
 
-    public double getKtd() {
-        return ktd;
+    public double getKdt() {
+        return kdt;
     }
 
     public double getTbk() {
@@ -33,8 +33,8 @@ public class Keyboard {
         this.timestamp = timestamp;
     }
 
-    public void setKtd(double ktd) {
-        this.ktd = ktd;
+    public void setKdt(double ktd) {
+        this.kdt = ktd;
     }
 
     public void setTbk(double tbk) {
@@ -45,7 +45,7 @@ public class Keyboard {
     public String toString() {
         return "Keyboard{" +
                 "timestamp=" + timestamp +
-                ", ktd=" + ktd +
+                ", ktd=" + kdt +
                 ", tbk=" + tbk +
                 '}';
     }

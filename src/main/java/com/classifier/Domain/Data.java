@@ -10,14 +10,14 @@ public class Data {
     private Date initialDate;
     private Date finalDate;
     private String user;
-    private ArrayList<Task> listTask;
+    private ArrayList<App> listTask;
     private ArrayList<Mouse> listMouse;
     private ArrayList<Keyboard> listKeyboard;
 
     public Data() {
     }
 
-    public Data(Date initialDate, Date finalDate, String user, ArrayList<Task> listTask, ArrayList<Mouse> listMouse, ArrayList<Keyboard> listKeyboard) {
+    public Data(Date initialDate, Date finalDate, String user, ArrayList<App> listTask, ArrayList<Mouse> listMouse, ArrayList<Keyboard> listKeyboard) {
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.user = user;
@@ -38,7 +38,7 @@ public class Data {
         this.user = user;
     }
 
-    public void setListTask(ArrayList<Task> listTask) {
+    public void setListApp(ArrayList<App> listTask) {
         this.listTask = listTask;
     }
 
@@ -63,7 +63,7 @@ public class Data {
         return user;
     }
 
-    public ArrayList<Task> getListTask() {
+    public ArrayList<App> getListApp() {
         return listTask;
     }
 
