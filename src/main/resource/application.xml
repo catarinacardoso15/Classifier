@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id = "dataSource"
+          class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name = "driverClassName" value = "com.mysql.jdbc.Driver"/>
+        <property name = "url" value = "jdbc:mysql://g6anxg1tcoqyavj5:eukj7ce727s42u2i@gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/y8m51b0v5k4xixb1"/>
+        <property name = "username" value = "g6anxg1tcoqyavj5"/>
+        <property name = "password" value = "eukj7ce727s42u2i"/>
+    </bean>
+</beans>

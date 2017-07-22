@@ -63,8 +63,9 @@ public class Classifier {
         DataController controller = new DataController();
         Date i = new Date(Long.parseLong(di));
         Date f = new Date(Long.parseLong(df));
-        controller.createData(i, f);
-        ArrayList<Data> d = controller.getData();
+
+        ArrayList<Data> d= controller.createData(i, f);
+
         AttentionResultController t = new AttentionResultController();
         ArrayList<AttentionResult> allResults = new ArrayList<AttentionResult>();
 
